@@ -3,7 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import BlogPost
 from .serializers import BlogPostSerializer
-
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+from .serializers import BlogPostSerializer
 
 @api_view(["GET"])
 def index(request):
@@ -18,6 +20,7 @@ def get_posts(request):
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def create_post(request):
     serializer = BlogPostSerializer(data=request.data)
     if serializer.is_valid():
