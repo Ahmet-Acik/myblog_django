@@ -1,4 +1,11 @@
 from django.db import models
+"""
+This module defines the models for the blog API.
+Classes:
+    BlogPost: A model representing a blog post with a title, body, and timestamps for creation and updates.
+"""
+
+
 
 # Create your models here.
 class BlogPost(models.Model):
